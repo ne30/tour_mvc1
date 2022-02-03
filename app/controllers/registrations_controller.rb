@@ -11,7 +11,7 @@ class RegistrationsController < ApplicationController
             # redirect_to sign_up_path, notice: "Successfully created account"
             # redirect_to root_path, notice: "Successfully created account"
         else
-            flash[:alert] = "Something went wrong"
+            flash[:error] = "Something went wrong"
             render :new
         end
     end

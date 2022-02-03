@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
             puts "hello " + user.user_name
             redirect_to home_path, notice: "tours list"
         else
-            flash[:alert] = "Invalid user_name or password"
+            flash[:error] = "Invalid user_name or password"
             render :new
         end
     end
