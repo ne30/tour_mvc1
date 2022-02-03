@@ -1,0 +1,27 @@
+<h1> User Booked Ticket List </h1>
+
+<h2>
+    <%= @user.user_name %>
+</h2>
+
+<table>
+  <tr>
+    <th>Ticket Code</th>
+    <th>From </th>
+    <th>To </th>
+    <th>Tour Code</th>
+    <th>Companion User Name</th>
+    <%# <th></th> %>
+  </tr>
+
+<% @tickets.each do |ticket| %>
+  <tr>
+    <td><%= ticket.id %></td>
+    <td><%= ticket.tour.from %></td>
+    <td><%= ticket.tour.to %></td>
+    <td><%= ticket.tour.id %></td>
+    <td><%= ticket.companion_user_name %></td>
+    </tr>
+<% end %>
+</table>
+

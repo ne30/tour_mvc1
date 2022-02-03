@@ -1,0 +1,29 @@
+<h1> Tour List </h1>
+
+<h2>
+    <%= User.find(session[:user_id]).user_name %>
+</h2>
+
+<table>
+  <tr>
+    <th>Tour Code</th>
+    <th>From </th>
+    <th>To </th>
+    <th>Day</th>
+    <th>Price</th>
+    <%# <th></th> %>
+  </tr>
+
+<% @tours.each do |tour| %>
+  <tr>
+    <td><%= tour.tour_code %></td>
+    <td><%= tour.from %></td>
+    <td><%= tour.to %></td>
+    <td><%= tour.day %></td>
+    <td><%= tour.price %></td>
+    <td><%= button_to 'Book',  tours_path(param:tour) %></td>
+    <%# <td><%= link_to 'Book', tours_path(param:tour), method: :post %></td> %>
+    </tr>
+<% end %>
+</table>
+
