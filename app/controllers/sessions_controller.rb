@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
         if user.present? && user.authenticate(params[:password])
             session[:user_id] = user.id
             puts "hello " + user.user_name
-            redirect_to home_path, notice: "tours list"
+            redirect_to tours_path
         else
             flash[:error] = "Invalid user_name or password"
-            render :new
+            redirect_to sign_in_path
         end
     end
 

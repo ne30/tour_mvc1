@@ -11,7 +11,9 @@ class ToursController <  ApplicationController
 
     def all
         @tours = Tour.all
-        puts @tours[0]
+        @tickets = Ticket.all
+        @user = User.find(session[:user_id])
+        # puts @tours[0]
         render "show_all"
     end
 
@@ -51,6 +53,8 @@ class ToursController <  ApplicationController
                 companion_to_add.ticket_id = new_ticket.id
                 companion_to_add.save
             end
+            flash[:success] = "Successfully Booked Ticket for " + tour.id.to_s
+            redirect_to tours_path
         end
     end
 end

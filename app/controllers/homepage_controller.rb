@@ -15,3 +15,16 @@ class HomepageController <  ApplicationController
         render "home_page"
     end
 end
+
+# def add_tour()
+#     tour = Tour.new
+#     tour.tour_code = gets.chomp
+#     tour.from = gets.chomp
+#     tour.to = gets.chomp
+#     tour.day = gets.chomp
+#     tour.start_time = gets.chomp
+#     tour.end_time = gets.chomp
+#     tour.passenger_limit = gets.chomp.to_i
+#     tour.price = gets.chomp.to_f
+#     tour.save   
+# end
