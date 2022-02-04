@@ -9,8 +9,6 @@ class RegistrationsController < ApplicationController
             session[:user_id] = @user_id
             flash[:success] = "Successfully created account"
             redirect_to sign_in_path
-            # redirect_to sign_up_path, notice: "Successfully created account"
-            # redirect_to root_path, notice: "Successfully created account"
         else
             flash[:error] = "Something went wrong"
             redirect_to sign_up_path

@@ -4,12 +4,10 @@ class ToursController <  ApplicationController
     def checkUser
         if session[:user_id]==nil
             redirect_to sign_up_path, notice: "Logged Out"
-        # else
-        #     redirect_to sign_up_path, notice: "Logged Out"
         end
     end
 
-    def all
+    def showAllTour
         @tours = Tour.all
         @tickets = Ticket.all
         @user = User.find(session[:user_id])
@@ -17,16 +15,13 @@ class ToursController <  ApplicationController
         render "show_all"
     end
 
-    def book
-        puts "Hit at book"
-        puts params
+    def bookTicket
         tour = Tour.find(params[:param])
         user = User.find(session[:user_id])
-        # companions = Companion.all
-        # tickets = Ticket.all
-
-        if Ticket.find_by(user_id: user.id, tour_id: tour.id).present?
-            puts "already booked"
+        
+        if tour.passenger_limit == 0
+            flash[:error] = "Tour is completely booked!"
+            redirect_to tours_path
         else
             new_ticket = Ticket.new
             new_ticket.user_id = user.id
@@ -54,6 +49,8 @@ class ToursController <  ApplicationController
                 companion_to_add.save
             end
             flash[:success] = "Successfully Booked Ticket for " + tour.id.to_s
+            tour.passenger_limit = tour.passenger_limit - 1
+            tour.save
             redirect_to tours_path
         end
     end
