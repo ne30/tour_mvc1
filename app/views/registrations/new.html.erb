@@ -24,11 +24,15 @@
             <%= form.password_field :password_confirmation, class: "form-control" %>
         </div>
 
-        <div class="mb-3">
-            <%= form.submit "SignUp", class: "btn btn-primary" %>
+        <div class="container mb-3">
+            <div class="row row-cols-auto">
+                <%= form.submit "SignUp", class: "btn btn-primary" %>
+                <div class="mt-2" >
+                    <h6 class="fs-6 fw-light ms-2">Already a user?</h6>
+                </div>
+                <%= link_to '<button type="button" class="btn btn-dark">Sign In</button>'.html_safe, sign_in_path %>
+            </div>
         </div>
-
     <% end %>
-    <h6>Already a user?</h6>
-    <%= link_to '<button type="button" class="btn btn-primary">Sign In</button>'.html_safe, sign_in_path %>
+    
 </div>

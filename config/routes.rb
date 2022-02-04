@@ -16,7 +16,12 @@ Rails.application.routes.draw do
   post "tours", to: "tours#bookTicket"
 
   get "tickets", to: "tickets#showUserTickets"
+  get "all_tickets", to: "tickets#showAllTickets"
 
   post "logout", to: "login#logout"
-  # TODO post
+
+  get "admin", to: "admin#new"
+  post "admin", to: "admin#create"
+
+  post "logout_admin", to: "admin#logout"
 end
