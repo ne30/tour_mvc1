@@ -23,7 +23,7 @@
             <td><%= tour.to %></td>
             <td><%= tour.day %></td>
             <td><%= tour.price %></td>
-            <td><%= @tickets.find_by(user_id: session[:user_id], tour_id: tour.id).present? ? "Already booked" : (button_to 'Book', tours_path(param:tour)) %></td>
+            <td><%= @tickets.find_by(user_id: session[:user_id], tour_id: tour.id).present? ? "Already booked" : (link_to '<button type="button" class="btn btn-secondary">Book</button>'.html_safe, chosen_tour_path(param:tour)) %> </td>
         </tr>
     <% end %>
     </table>
